@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darryl | Data Science & Machine Learning</title>
+
+    <meta name="description" content="Darryl's portfolio focused on Data Science, Machine Learning, Python, competitive programming and academic activities.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #05070d;
+            --bg-secondary: #0a0f1c;
+            --card: rgba(15, 22, 38, 0.72);
+            --border: rgba(255,255,255,0.09);
+            --text: #f5f7ff;
+            --muted: #9ca7bb;
+            --primary: #6c63ff;
+            --secondary: #00d4ff;
+            --gradient: linear-gradient(135deg, #6c63ff, #00d4ff);
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(108,99,255,.15), transparent 30%),
+                radial-gradient(circle at 90% 30%, rgba(0,212,255,.10), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            backdrop-filter: blur(18px);
+            background: rgba(5,7,13,.72);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: .84rem;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 90px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border: 1px solid rgba(0,212,255,.25);
+            background: rgba(0,212,255,.07);
+            border-radius: 999px;
+            color: #8cecff;
+            font-size: .82rem;
+            margin-bottom: 22px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00d4ff;
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(3rem, 7vw, 5.8rem);
+            line-height: .98;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 21px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 600;
+            transition: .3s;
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.03);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient);
+            filter: blur(90px);
+            opacity: .22;
+        }
+
+        .profile-image {
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,.12);
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,.5);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: var(--secondary);
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 12px auto 0;
+        }
+
+        .glass-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(16px);
+        }
+
+        .glass-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 22px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.025);
+            border: 1px solid var(--border);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.7rem;
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            transition: .3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0,212,255,.3);
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: rgba(108,99,255,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: .86rem;
+        }
+
+        .language-list div {
+            margin-bottom: 8px;
+        }
+
+        .language-list strong {
+            color: white;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .project-image {
+            height: 210px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-family: "Space Grotesk", sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            background: rgba(0,212,255,.08);
+            color: #8cecff;
+            border-radius: 6px;
+            font-size: .75rem;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================= */
+
+        .timeline {
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 45px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg);
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-family: "Space Grotesk", sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: var(--secondary);
+            font-size: .82rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           ACTIVITIES
+        ========================= */
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .activity-card {
+            position: relative;
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .activity-card::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: var(--primary);
+            filter: blur(70px);
+            opacity: .12;
+            right: -50px;
+            top: -50px;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(108,99,255,.35);
+        }
+
+        .activity-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: rgba(108,99,255,.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 22px;
+        }
+
+        .activity-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .activity-card p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .activity-label {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: .72rem;
+            color: #8cecff;
+            background: rgba(0,212,255,.08);
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .achievement-box {
+            margin-top: 35px;
+            padding: 28px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(108,99,255,.10), rgba(0,212,255,.06));
+            border: 1px solid var(--border);
+        }
+
+        .achievement-box h3 {
+            font-family: "Space Grotesk", sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .achievement-box p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 260px;
+            gap: 18px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-large {
+            grid-row: span 2;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,.88),
+                rgba(0,0,0,.15),
+                transparent
+            );
+            opacity: 0;
+            transition: .4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            display: inline-block;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8cecff;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.15rem;
+        }
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.92);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 30px 100px rgba(0,0,0,.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.2);
+            background: rgba(255,255,255,.08);
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            padding: 50px;
+            background:
+                radial-gradient(circle at center, rgba(108,99,255,.12), transparent 60%),
+                var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+        }
+
+        .contact-box h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-box > p {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            padding: 20px 10px;
+            background: rgba(255,255,255,.025);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            transition: .3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,212,255,.3);
+        }
+
+        .contact-card i {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 9px;
+        }
+
+        .contact-card span {
+            display: block;
+            color: var(--muted);
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-card p {
+            font-size: .78rem;
+            margin-top: 3px;
+            word-break: break-word;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        /* =========================
+           PARTICLES
+        ========================= */
+
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: .76rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image-wrapper {
+                order: -1;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.1rem;
+            }
+
+            .profile-image {
+                width: 260px;
+                height: 330px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 260px;
+            }
+
+            .gallery-large {
+                grid-row: span 1;
+            }
+
+            .gallery-overlay {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PARTICLES -->
+    <div class="particle" style="left:10%; animation-duration:12s;"></div>
+    <div class="particle" style="left:25%; animation-duration:18s;"></div>
+    <div class="particle" style="left:40%; animation-duration:15s;"></div>
+    <div class="particle" style="left:60%; animation-duration:20s;"></div>
+    <div class="particle" style="left:75%; animation-duration:13s;"></div>
+    <div class="particle" style="left:90%; animation-duration:17s;"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                Darryl<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="container hero-grid">
+
+            <div class="hero-content reveal">
+
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Data Science & Machine Learning
+                </div>
+
+                <h1>
+                    Hi, I'm
+                    <span class="gradient-text">Darryl.</span>
+                    <br>
+                    I Build With Data.
+                </h1>
+
+                <p>
+                    Informatics student focused on
+                    <strong>Data Science, Machine Learning, Python</strong>
+                    and turning data into meaningful insights
+                    and intelligent solutions.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fa-solid fa-chart-line"></i>
+                        View Projects
+                    </a>
+
+                    <a
+                        href="https://wa.me/6281219304260?text=Halo%20Darryl,%20saya%20melihat%20portfolio%20Anda%20dan%20ingin%20berdiskusi%20mengenai%20Data%20Science%20atau%20Machine%20Learning."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp Me
+                    </a>
+
+                    <a
+                        href="mailto:matthewirvin01@gmail.com?subject=Data%20Science%20Portfolio%20Inquiry"
+                        class="btn btn-secondary"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                        Email Me
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image-wrapper reveal">
+
+                <div class="hero-image-glow"></div>
+
+                <img
+                    src="compe.jpg"
+                    alt="Darryl"
+                    class="profile-image"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+                <span>About Me</span>
+
+                <h2>Data Is More Than Numbers</h2>
+
+                <p>
+                    I am interested in understanding patterns,
+                    building predictive models,
+                    and using data to solve real-world problems.
+                </p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="glass-card reveal">
+
+                    <h3>Who I Am</h3>
+
+                    <p>
+                        I am an Informatics student with a strong
+                        interest in Data Science and Machine Learning.
+                        My main tools are Python and its data ecosystem,
+                        including Pandas, NumPy, Scikit-learn,
+                        and data visualization tools.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I enjoy working with datasets,
+                        exploring patterns, preparing data,
+                        training machine learning models,
+                        and evaluating model performance.
+                    </p>
+
+                </div>
+
+                <div class="glass-card reveal">
+
+                    <h3>What I Focus On</h3>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <strong>Python</strong>
+                            <span>Primary Programming Language</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>ML</strong>
+                            <span>Model Development</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>Data</strong>
+                            <span>Analysis & Visualization</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>AI</strong>
+                            <span>Exploration & Learning</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Technical Skills</span>
+
+                <h2>Tools I Work With</h2>
+
+                <p>
+                    My technical focus is centered around
+                    Python, data analysis, machine learning,
+                    statistics, and NLP.
+                </p>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+
+                    <h3>Python</h3>
+
+                    <p>
+                        Programming, data processing,
+                        automation, and machine learning workflows.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-table"></i>
+                    </div>
+
+                    <h3>Pandas</h3>
+
+                    <p>
+                        Data cleaning, preprocessing,
+                        transformation, and exploratory analysis.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+
+                    <h3>NumPy</h3>
+
+                    <p>
+                        Numerical computing, arrays,
+                        mathematical operations, and data preparation.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+
+                    <h3>Data Visualization</h3>
+
+                    <p>
+                        Exploring and communicating patterns
+                        through charts and visual analysis.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+
+                    <h3>Machine Learning</h3>
+
+                    <p>
+                        Classification, regression,
+                        model training, evaluation, and prediction.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <h3>Scikit-learn</h3>
+
+                    <p>
+                        Machine learning algorithms,
+                        preprocessing, cross-validation, and evaluation.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <h3>SQL</h3>
+
+                    <p>
+                        Querying, filtering, aggregation,
+                        joins, and relational data analysis.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+
+                    <h3>Statistics</h3>
+
+                    <p>
+                        Statistical concepts for understanding,
+                        analyzing, and evaluating data.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+
+                    <h3>Languages</h3>
+
+                    <div class="language-list">
+
+                        <div>
+                            <strong>Indonesian</strong><br>
+                            Native
+                        </div>
+
+                        <div>
+                            <strong>English</strong><br>
+                            Fluent
+                        </div>
+
+                        <div>
+                            <strong>German</strong><br>
+                            Currently Learning
+                        </div>
+
+                        <div>
+                            <strong>Dutch</strong><br>
+                            Currently Learning
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Projects</span>
+
+                <h2>Things I've Worked On</h2>
+
+                <p>
+                    Examples of projects focused on
+                    data analysis, machine learning,
+                    NLP, and Python.
+                </p>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000"
+                        alt="Data Analysis"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Data Analysis</h3>
+
+                        <p>
+                            Exploratory data analysis project focused
+                            on cleaning datasets, identifying patterns,
+                            and extracting useful insights.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Visualization</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1000"
+                        alt="Machine Learning"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Machine Learning Classification</h3>
+
+                        <p>
+                            Classification model development using
+                            preprocessing, feature engineering,
+                            training, and model evaluation.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">SVM</span>
+                            <span class="tag">Cross Validation</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1000"
+                        alt="Sentiment Analysis"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Sentiment Analysis</h3>
+
+                        <p>
+                            Natural Language Processing project using
+                            TF-IDF and machine learning classification
+                            to analyze text sentiment.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">TF-IDF</span>
+                            <span class="tag">SVM</span>
+                            <span class="tag">Python</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000"
+                        alt="Predictive Modeling"
+                        class="project-image"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Predictive Modeling</h3>
+
+                        <p>
+                            Predictive modeling workflow involving
+                            data preprocessing, model training,
+                            evaluation metrics, and prediction.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Statistics</span>
+                            <span class="tag">Scikit-learn</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Experience</span>
+
+                <h2>Academic Experience</h2>
+
+                <p>
+                    Experience gained through university,
+                    laboratory activities, and technical development.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <h3>Informatics Laboratory Assistant</h3>
+
+                    <div class="date">
+                        Universitas Gunadarma
+                    </div>
+
+                    <p>
+                        Supporting practical learning activities
+                        in the Informatics Laboratory, assisting
+                        students during laboratory sessions,
+                        and helping explain programming and
+                        technical concepts.
+                    </p>
+
+                </div>
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <h3>Informatics Student</h3>
+
+                    <div class="date">
+                        Universitas Gunadarma
+                    </div>
+
+                    <p>
+                        Studying Informatics with a growing focus
+                        on Data Science, Machine Learning,
+                        Python, databases, statistics,
+                        and computational problem solving.
+                    </p>
+
+                </div>
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <h3>Data Science & Machine Learning Development</h3>
+
+                    <div class="date">
+                        Ongoing
+                    </div>
+
+                    <p>
+                        Continuously developing skills in
+                        data analysis, machine learning,
+                        NLP, model evaluation, statistics,
+                        and Python-based data workflows.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activities">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Activities</span>
+
+                <h2>Beyond The Classroom</h2>
+
+                <p>
+                    Academic and competitive activities
+                    that helped develop my problem-solving,
+                    teamwork, and technical skills.
+                </p>
+
+            </div>
+
+            <div class="activities-grid">
+
+                <div class="activity-card reveal">
+
+                    <div class="activity-icon">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+
+                    <h3>Laboratory Assistant</h3>
+
+                    <p>
+                        Active as an Informatics Laboratory Assistant,
+                        supporting practical sessions and helping
+                        students understand programming and
+                        technical concepts.
+                    </p>
+
+                    <span class="activity-label">
+                        Academic Activity
+                    </span>
+
+                </div>
+
+                <div class="activity-card reveal">
+
+                    <div class="activity-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <h3>Competitive Programming</h3>
+
+                    <p>
+                        Participated in competitive programming
+                        activities focused on algorithmic thinking,
+                        logical problem solving, programming,
+                        and working under time constraints.
+                    </p>
+
+                    <span class="activity-label">
+                        Competition
+                    </span>
+
+                </div>
+
+                <div class="activity-card reveal">
+
+                    <div class="activity-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <h3>Program Kreativitas Mahasiswa</h3>
+
+                    <p>
+                        Participated in PKM twice, gaining experience
+                        in developing ideas, preparing proposals,
+                        working collaboratively, and presenting
+                        academic project concepts.
+                    </p>
+
+                    <span class="activity-label">
+                        2× PKM Participant
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="achievement-box reveal">
+
+                <h3>Academic & Technical Activities</h3>
+
+                <p>
+                    My university experience combines technical learning,
+                    laboratory activities, competitive programming,
+                    and participation in PKM. These experiences
+                    complement my development in Data Science,
+                    Machine Learning, and problem solving.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Documentation</span>
+
+                <h2>My Activities Gallery</h2>
+
+                <p>
+                    A collection of moments from my academic journey,
+                    laboratory activities, and competitive programming.
+                </p>
+
+            </div>
+
+            <div class="gallery-grid">
+
+                <!-- ASLAB 1 -->
+                <div
+                    class="gallery-item gallery-large reveal"
+                    onclick="openLightbox(this)"
+                >
+
+                    <img
+                        src="COMPE1.JPG"
+                        alt="COMPETITION"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <div>
+                            <span>COMPETITION</span>
+                            <h3>Competitive Programming</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ASLAB 2 -->
+                <div
+                    class="gallery-item reveal"
+                    onclick="openLightbox(this)"
+                >
+
+                    <img
+                        src="aslab.jpeg"
+                        alt="Laboratory Assistant"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <div>
+                            <span>INFORMATICS LABORATORY</span>
+                            <h3>Laboratory Assistant</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- COMPETITIVE PROGRAMMING -->
+                <div
+                    class="gallery-item reveal"
+                    onclick="openLightbox(this)"
+                >
+
+                    <img
+                        src="COMPE 22.JPG"
+                        alt="Competitive Programming"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <div>
+                            <span>Competition</span>
+                            <h3>Competitive Programming</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div
+        class="lightbox"
+        id="lightbox"
+        onclick="closeLightbox()"
+    >
+
+        <button
+            class="lightbox-close"
+            onclick="closeLightbox()"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <img
+            id="lightbox-image"
+            src=""
+            alt="Gallery Preview"
+        >
+
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact-box reveal">
+
+                <h2>Let's Work With Data</h2>
+
+                <p>
+                    Interested in Data Science, Machine Learning,
+                    Python, or just want to discuss a project?
+                    Feel free to reach out.
+                </p>
+
+                <div
+                    class="hero-buttons"
+                    style="justify-content:center;"
+                >
+
+                    <a
+                        href="https://wa.me/6281219304260?text=Halo%20Darryl,%20saya%20melihat%20portfolio%20Anda%20dan%20ingin%20berdiskusi%20mengenai%20Data%20Science%20atau%20Machine%20Learning."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-primary"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp Me
+                    </a>
+
+                    <a
+                        href="mailto:matthewirvin01@gmail.com?subject=Data%20Science%20Portfolio%20Inquiry"
+                        class="btn btn-secondary"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                        Email Me
+                    </a>
+
+                </div>
+
+                <div class="contact-grid">
+
+                    <a
+                        href="https://wa.me/6281219304260"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-card"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                        <p>0812 1930 4260</p>
+                    </a>
+
+                    <a
+                        href="mailto:matthewirvin01@gmail.com"
+                        class="contact-card"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Email</span>
+                        <p>matthewirvin01@gmail.com</p>
+                    </a>
+
+                    <a
+                        href="https://github.com/Lapse714"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-card"
+                    >
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                        <p>github.com/Lapse714</p>
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/darryl-ginting-7a0506339/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-card"
+                    >
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                        <p>Darryl Ginting</p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            © 2026 Darryl. Data Science • Machine Learning • Python
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        revealElements.forEach((element) => {
+            revealObserver.observe(element);
+        });
+
+
+        /* =========================
+           HERO MOUSE PARALLAX
+        ========================= */
+
+        const heroImage =
+            document.querySelector(".hero-image-wrapper");
+
+        document.addEventListener("mousemove", (event) => {
+
+            if (!heroImage) return;
+
+            const x =
+                (window.innerWidth / 2 - event.clientX) / 45;
+
+            const y =
+                (window.innerHeight / 2 - event.clientY) / 45;
+
+            heroImage.style.transform =
+                `translate(${x}px, ${y}px)`;
+
+        });
+
+
+        /* =========================
+           GALLERY LIGHTBOX
+        ========================= */
+
+        function openLightbox(element) {
+
+            const image =
+                element.querySelector("img");
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const lightboxImage =
+                document.getElementById("lightbox-image");
+
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        function closeLightbox() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            lightbox.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+
+        /* =========================
+           ESCAPE TO CLOSE LIGHTBOX
+        ========================= */
+
+        document.addEventListener("keydown", (event) => {
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
